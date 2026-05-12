@@ -1,5 +1,6 @@
 package com.debora.inmobiliaria.ui.inicio;
 
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -13,10 +14,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.debora.inmobiliaria.R;
+import com.debora.inmobiliaria.databinding.FragmentInicioBinding;
+import com.debora.inmobiliaria.databinding.FragmentPerfilBinding;
+import com.debora.inmobiliaria.ui.perfil.PerfilViewModel;
+import com.google.android.gms.maps.SupportMapFragment;
 
 public class InicioFragment extends Fragment {
 
     private InicioViewModel mViewModel;
+    private FragmentInicioBinding binding;
 
     public static InicioFragment newInstance() {
         return new InicioFragment();
@@ -25,7 +31,18 @@ public class InicioFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_inicio, container, false);
+        binding = FragmentInicioBinding.inflate(inflater, container, false);
+        mViewModel= new ViewModelProvider(this).get(InicioViewModel.class);
+        View root = binding.getRoot();
+
+        mViewModel.getMapaActual().observe(getViewLifecycleOwner(), new Observer<InicioViewModel.MapaActual>() {
+            @Override
+            public void onChanged(InicioViewModel.MapaActual mapaActual) {
+                ((SupportMapFragment)getChildFragmentManager().findFragmentById(R.id.map)).getMapAsync(mapaActual);// uso getChildFragmentManager() para manejar fragmentos anidados dentro de otro Fragment
+            }
+        });
+        mViewModel.cargarMapa();
+        return root;
     }
 
     @Override
