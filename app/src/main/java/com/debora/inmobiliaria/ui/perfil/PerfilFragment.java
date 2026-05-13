@@ -44,6 +44,29 @@ public class PerfilFragment extends Fragment {
                 binding.etTelefono.setText(propietario.getTelefono());
             }
         });
+        // observer del estado
+        mViewModel.getEditableM().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean esEditable) {
+                // habilitar o deshabilitar según el mutable
+                binding.etDni.setEnabled(esEditable);
+                binding.etNombre.setEnabled(esEditable);
+                binding.etApellido.setEnabled(esEditable);
+                binding.etCorreo.setEnabled(esEditable);
+                binding.etTelefono.setEnabled(esEditable);
+
+                // Cambiar el texto del boton
+                binding.button.setText(esEditable ? "Guardar" : "Editar");
+            }
+        });
+
+        // Listener del boton
+        binding.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mViewModel.cambiarEstadoEdicion();//Si esta en EDITAR habilita los campos y si esta en GUARDAR, actualiza los campos
+            }
+        });
         mViewModel.cargarPerfil();
         return root;
     }

@@ -7,31 +7,31 @@
     <fragment
         android:id="@+id/nav_inicio"
         android:name="com.debora.inmobiliaria.ui.inicio.InicioFragment"
-        android:label="fragment_inicio"
+        android:label="Inicio"
         tools:layout="@layout/fragment_inicio" />
     <fragment
         android:id="@+id/nav_perfil"
         android:name="com.debora.inmobiliaria.ui.perfil.PerfilFragment"
-        android:label="fragment_perfil"
+        android:label="Perfil"
         tools:layout="@layout/fragment_perfil" />
     <fragment
         android:id="@+id/nav_inmuebles"
         android:name="com.debora.inmobiliaria.ui.inmuebles.InmueblesFragment"
-        android:label="fragment_inmuebles"
+        android:label="Inmuebles"
         tools:layout="@layout/fragment_inmuebles" />
     <fragment
         android:id="@+id/nav_inquilinos"
         android:name="com.debora.inmobiliaria.ui.inquilinos.InquilinosFragment"
-        android:label="fragment_inquilinos"
+        android:label="Inquilinos"
         tools:layout="@layout/fragment_inquilinos" />
     <fragment
         android:id="@+id/nav_contratos"
         android:name="com.debora.inmobiliaria.ui.contratos.ContratosFragment"
-        android:label="fragment_contratos"
+        android:label="Contratos"
         tools:layout="@layout/fragment_contratos" />
     <fragment
         android:id="@+id/nav_logout"
         android:name="com.debora.inmobiliaria.ui.logout.LogoutFragment"
-        android:label="fragment_logout"
+        android:label="Logout"
         tools:layout="@layout/fragment_logout" />
 </navigation>

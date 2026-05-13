@@ -19,6 +19,7 @@ import retrofit2.Response;
 
 public class PerfilViewModel extends AndroidViewModel {
     private MutableLiveData<Propietario> propietarioM;
+    private MutableLiveData<Boolean> editableM;
 
     public PerfilViewModel(@NonNull Application application) {
         super(application);
@@ -30,8 +31,16 @@ public class PerfilViewModel extends AndroidViewModel {
         }
         return propietarioM;
     }
+    public LiveData<Boolean> getEditableM() {
+        if (editableM == null) {
+            editableM = new MutableLiveData<>();
+            editableM.setValue(false); // arranca con los campos bloqueados
+        }
+        return editableM;
+    }
 
     public void cargarPerfil(){
+        editableM.setValue(false);
         String token=ApiClient.usarToken(getApplication());
         ApiClient.ServicioInmobiliaria servicio = ApiClient.obtenerServicio();
         Call<Propietario> call = servicio.getPropietario(token);
@@ -41,6 +50,7 @@ public class PerfilViewModel extends AndroidViewModel {
                 if (response.isSuccessful()){
                     Propietario p = response.body();
                     propietarioM.postValue(p);
+                    editableM.postValue(false);
                 }else{
                     Log.d("Perfil", "Código error: " + response.code());
                 }
@@ -53,4 +63,15 @@ public class PerfilViewModel extends AndroidViewModel {
         });
 
     }
+
+    public void cambiarEstadoEdicion() {
+        // Si era true pasa a false y viceversa
+        boolean nuevoEstado = !editableM.getValue();
+        editableM.setValue(nuevoEstado);
+
+        if (!nuevoEstado) {
+            //actualizar datos
+        }
+    }
+
 }
