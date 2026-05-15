@@ -13,7 +13,11 @@
         android:id="@+id/nav_perfil"
         android:name="com.debora.inmobiliaria.ui.perfil.PerfilFragment"
         android:label="Perfil"
-        tools:layout="@layout/fragment_perfil" />
+        tools:layout="@layout/fragment_perfil" >
+        <action
+            android:id="@+id/action_nav_perfil_to_perfilEditarContrasenaFragment"
+            app:destination="@id/perfilEditarContrasenaFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_inmuebles"
         android:name="com.debora.inmobiliaria.ui.inmuebles.InmueblesFragment"
@@ -34,4 +38,13 @@
         android:name="com.debora.inmobiliaria.ui.logout.LogoutFragment"
         android:label="Logout"
         tools:layout="@layout/fragment_logout" />
+    <fragment
+        android:id="@+id/perfilEditarContrasenaFragment"
+        android:name="com.debora.inmobiliaria.ui.perfil.PerfilEditarContrasenaFragment"
+        android:label="Cambiar contrasenia"
+        tools:layout="@layout/fragment_perfil_editar_contrasena" >
+        <action
+            android:id="@+id/action_perfilEditarContrasenaFragment_to_nav_perfil"
+            app:destination="@id/nav_perfil" />
+    </fragment>
 </navigation>

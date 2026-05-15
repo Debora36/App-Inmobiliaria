@@ -8,6 +8,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,7 +66,25 @@ public class PerfilFragment extends Fragment {
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mViewModel.cambiarEstadoEdicion();//Si esta en EDITAR habilita los campos y si esta en GUARDAR, actualiza los campos
+                Boolean esEditable = mViewModel.getEditableM().getValue();
+
+                if (esEditable) {//esta en modo edicion
+                    String nombre    = binding.etNombre.getText().toString();
+                    String apellido  = binding.etApellido.getText().toString();
+                    String correo    = binding.etCorreo.getText().toString();
+                    String telefono  = binding.etTelefono.getText().toString();
+
+                    mViewModel.guardarPerfil(nombre, apellido, correo, telefono);
+                } else {
+                    mViewModel.cambiarEstadoEdicion();//habilita los campos
+                }
+            }
+        });
+        binding.btnCambiarContra.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavController nav= Navigation.findNavController(v);
+                nav.navigate(R.id.action_nav_perfil_to_perfilEditarContrasenaFragment);
             }
         });
         mViewModel.cargarPerfil();

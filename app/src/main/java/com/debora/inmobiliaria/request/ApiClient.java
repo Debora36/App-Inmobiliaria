@@ -3,18 +3,23 @@ package com.debora.inmobiliaria.request;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.debora.inmobiliaria.modelo.Inmueble;
 import com.debora.inmobiliaria.modelo.Propietario;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 
 public class ApiClient {
     public final static String BASE_URL = "https://capacitacion.alwaysdata.net/";
@@ -36,6 +41,18 @@ public class ApiClient {
         //metodo para llamr al propietario
         @GET("api/propietarios")
             Call<Propietario> getPropietario (@Header("Authorization") String token);
+
+        @PUT("api/Propietarios/actualizar")
+            Call<Propietario> actualizarPerfil(@Header("Authorization")String token, @Body Propietario propietario);
+
+        @FormUrlEncoded
+        @PUT("api/Propietarios/changePassword")
+            Call<Void>CambiarContra(@Header("Authorization")String token, @Field("CurrentPassword")String actual, @Field("newPassword")String nueva);
+
+        @GET("api/Inmubles")
+        Call<Inmueble> getInmuble(@Header("Authorization") String token);
+        @GET("/api/Inmuebles")
+        Call<List<Inmueble>> getInmuebles(@Header("Authorization") String token);
 
     }
     //creamos el token
