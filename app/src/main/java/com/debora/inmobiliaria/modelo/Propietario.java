@@ -3,14 +3,14 @@ package com.debora.inmobiliaria.modelo;
 import java.io.Serializable;
 
 public class Propietario implements Serializable {
-private int idProietario;
+private int idPropietario;
 private String nombre, apellido, dni, telefono, email, clave;
 
     public Propietario() {
     }
 
-    public Propietario(int idProietario, String nombre, String apellido, String dni, String telefono, String email, String clave) {
-        this.idProietario = idProietario;
+    public Propietario(int idPropietario, String nombre, String apellido, String dni, String telefono, String email, String clave) {
+        this.idPropietario = idPropietario;
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
@@ -19,12 +19,12 @@ private String nombre, apellido, dni, telefono, email, clave;
         this.clave = clave;
     }
 
-    public int getIdProietario() {
-        return idProietario;
+    public int getIdPropietario() {
+        return idPropietario;
     }
 
-    public void setIdProietario(int idProietario) {
-        this.idProietario = idProietario;
+    public void setIdPropietario(int idPropietario) {
+        this.idPropietario = idPropietario;
     }
 
     public String getClave() {

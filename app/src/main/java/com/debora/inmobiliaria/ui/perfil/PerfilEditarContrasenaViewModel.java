@@ -41,7 +41,7 @@ public class PerfilEditarContrasenaViewModel extends AndroidViewModel {
                         Toast.makeText(getApplication(), "Contrasenia cambiada", Toast.LENGTH_LONG).show();
                         exito.setValue(true);
                     } else {
-                        Toast.makeText(getApplication(), "Se produjo un error", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplication(), "Se produjo un error al modificar contrasenia", Toast.LENGTH_LONG).show();
                         exito.setValue(false);
                     }
                 }

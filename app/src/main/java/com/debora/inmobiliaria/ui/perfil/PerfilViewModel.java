@@ -79,6 +79,7 @@ public class PerfilViewModel extends AndroidViewModel {
         actual.setApellido(apellido);
         actual.setEmail(correo);
         actual.setTelefono(telefono);
+        actual.setClave(null);
 
         String token = ApiClient.usarToken(getApplication());
         ApiClient.ServicioInmobiliaria servicio = ApiClient.obtenerServicio();//Objeto que implementa la interfaz

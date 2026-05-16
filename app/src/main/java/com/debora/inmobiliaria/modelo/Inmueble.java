@@ -9,23 +9,19 @@ public class Inmueble implements Serializable {
     private String tipo;
     private int ambientes;
     private int superficie;
-    private double latitud;
     private double valor;
     private String imagen;
     private boolean disponible;
-    private double longitud;
     private int idPropietario;
-    private Propietario propietario;
+    private Propietario duenio;
 
-    public Inmueble(int idInmueble, Propietario propietario, int idPropietario, boolean disponible, double longitud, String imagen, double valor, double latitud, int superficie, int ambientes, String uso, String tipo, String direccion) {
+    public Inmueble(int idInmueble, Propietario propietario, int idPropietario, boolean disponible, String imagen, double valor, int superficie, int ambientes, String uso, String tipo, String direccion) {
         this.idInmueble = idInmueble;
-        this.propietario = propietario;
+        this.duenio = propietario;
         this.idPropietario = idPropietario;
         this.disponible = disponible;
-        this.longitud = longitud;
         this.imagen = imagen;
         this.valor = valor;
-        this.latitud = latitud;
         this.superficie = superficie;
         this.ambientes = ambientes;
         this.uso = uso;
@@ -92,13 +88,6 @@ public class Inmueble implements Serializable {
         this.superficie = superficie;
     }
 
-    public double getLatitud() {
-        return latitud;
-    }
-
-    public void setLatitud(double latitud) {
-        this.latitud = latitud;
-    }
 
     public double getValor() {
         return valor;
@@ -116,13 +105,6 @@ public class Inmueble implements Serializable {
         this.imagen = imagen;
     }
 
-    public double getLongitud() {
-        return longitud;
-    }
-
-    public void setLongitud(double longitud) {
-        this.longitud = longitud;
-    }
 
     public boolean isDisponible() {
         return disponible;
@@ -132,11 +114,11 @@ public class Inmueble implements Serializable {
         this.disponible = disponible;
     }
 
-    public Propietario getPropietario() {
-        return propietario;
+    public Propietario getDuenio() {
+        return duenio;
     }
 
-    public void setPropietario(Propietario propietario) {
-        this.propietario = propietario;
+    public void setDuenio(Propietario propietario) {
+        this.duenio = propietario;
     }
 }

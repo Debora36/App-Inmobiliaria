@@ -44,7 +44,6 @@ public class LoginActivityViewModel extends AndroidViewModel {
                     if (response.isSuccessful()){//si la respuesta es exitosa creo el token
                         String token = response.body();//recupera el string
                         ApiClient.crearToken(context, token);//lo guardo en el archivo de preferencia
-                        Log.d("token", token);
                         irActivityDos();
                     }else{
                         mensaje.setValue("datos incorrectos");
