@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.inmuebles.InmuebleCargarFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/teal_200"
+            android:padding="40dp">
+
+            <TextView
+                android:id="@+id/tvDireccion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Dirección:"
+                android:textColor="@color/marron"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <EditText
+                android:id="@+id/etDireccion"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:backgroundTint="@color/marron"
+                android:ems="16"
+                android:paddingBottom="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDireccion" />
+
+
+            <TextView
+                android:id="@+id/tvTipo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Tipo:"
+                android:textColor="@color/marron"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etDireccion" />/>
+
+
+            <Spinner
+                android:id="@+id/etTipo"
+                android:layout_width="110dp"
+                android:layout_height="45dp"
+                android:backgroundTint="@color/marron"
+                android:entries="@array/tipo_inmueble_options"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTipo" />
+
+            <TextView
+                android:id="@+id/tvSuperficie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Superficie:"
+                android:textColor="@color/marron"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etTipo" />
+
+            <EditText
+                android:id="@+id/etSuperficie"
+                android:layout_width="90dp"
+                android:layout_height="45dp"
+                android:backgroundTint="@color/marron"
+                android:ems="16"
+                android:inputType="number"
+                android:paddingBottom="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvSuperficie" />
+
+            <CheckBox
+                android:id="@+id/disponible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="Disponible"
+                android:textColor="@color/marron"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etSuperficie" />
+
+
+            <EditText
+                android:id="@+id/etAmbientes"
+                android:layout_width="90dp"
+                android:layout_height="45dp"
+                android:backgroundTint="@color/marron"
+                android:ems="16"
+                android:paddingBottom="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvAmbientes" />
+
+            <TextView
+                android:id="@+id/tvAmbientes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Ambientes:"
+                android:textColor="@color/marron"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etDireccion" />
+
+
+            <TextView
+                android:id="@+id/tvUso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Uso:"
+                android:textColor="@color/marron"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etAmbientes" />
+
+            <Spinner
+                android:id="@+id/etUso"
+                android:layout_width="110dp"
+                android:layout_height="45dp"
+                android:backgroundTint="@color/marron"
+                android:entries="@array/uso_inmueble_options"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guidelineCenter"
+                app:layout_constraintTop_toBottomOf="@+id/tvUso" />
+
+            <EditText
+                android:id="@+id/etPrecio"
+                android:layout_width="90dp"
+                android:layout_height="45dp"
+                android:backgroundTint="@color/marron"
+                android:ems="16"
+                android:inputType="numberDecimal"
+                android:paddingBottom="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvValor" />
+
+            <TextView
+                android:id="@+id/tvValor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Precio:"
+                android:textColor="@color/marron"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etUso" />
+
+            <ImageView
+                android:id="@+id/imagenInmueble"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="12dp"
+                android:background="@android:color/darker_gray"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toStartOf="@+id/btnBuscarImagen"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/disponible"
+                tools:src="@tools:sample/avatars" />
+
+            <Button
+                android:id="@+id/btnBuscarImagen"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:icon="@android:drawable/ic_menu_camera"
+                app:iconSize="20dp"
+                app:layout_constraintBottom_toTopOf="@+id/btnCargarInmueble"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imagenInmueble" />
+
+
+            <Button
+                android:id="@+id/btnCargarInmueble"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:text="Guardar Inmueble"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imagenInmueble" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+</FrameLayout>

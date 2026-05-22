@@ -22,7 +22,14 @@
         android:id="@+id/nav_inmuebles"
         android:name="com.debora.inmobiliaria.ui.inmuebles.InmueblesFragment"
         android:label="Inmuebles"
-        tools:layout="@layout/fragment_inmuebles" />
+        tools:layout="@layout/fragment_inmuebles" >
+        <action
+            android:id="@+id/action_nav_inmuebles_to_inmuebleDetalleFragment"
+            app:destination="@id/inmuebleDetalleFragment" />
+        <action
+            android:id="@+id/action_nav_inmuebles_to_inmuebleCargarFragment"
+            app:destination="@id/inmuebleCargarFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_inquilinos"
         android:name="com.debora.inmobiliaria.ui.inquilinos.InquilinosFragment"
@@ -46,5 +53,19 @@
         <action
             android:id="@+id/action_perfilEditarContrasenaFragment_to_nav_perfil"
             app:destination="@id/nav_perfil" />
+    </fragment>
+    <fragment
+        android:id="@+id/inmuebleDetalleFragment"
+        android:name="com.debora.inmobiliaria.ui.inmuebles.InmuebleDetalleFragment"
+        android:label="Informacion del inmueble"
+        tools:layout="@layout/fragment_inmueble_detalle" />
+    <fragment
+        android:id="@+id/inmuebleCargarFragment"
+        android:name="com.debora.inmobiliaria.ui.inmuebles.InmuebleCargarFragment"
+        android:label="Cargar nuevo inmueble"
+        tools:layout="@layout/fragment_inmueble_cargar" >
+        <action
+            android:id="@+id/action_inmuebleCargarFragment_to_nav_inmuebles"
+            app:destination="@id/nav_inmuebles" />
     </fragment>
 </navigation>

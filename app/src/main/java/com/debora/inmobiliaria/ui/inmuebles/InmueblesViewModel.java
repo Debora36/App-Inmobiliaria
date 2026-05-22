@@ -53,6 +53,7 @@ public class InmueblesViewModel extends AndroidViewModel {
                 }
             }
 
+
             @Override
             public void onFailure(Call<List<Inmueble>> call, Throwable t) {
                 Log.d("errorInmueble", t.getMessage());

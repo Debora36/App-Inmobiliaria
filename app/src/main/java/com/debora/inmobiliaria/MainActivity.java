@@ -3,12 +3,17 @@ package com.debora.inmobiliaria;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.Menu;
+import android.view.View;
+import android.widget.TextView;
 
+import com.debora.inmobiliaria.modelo.Propietario;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
@@ -21,19 +26,33 @@ import com.debora.inmobiliaria.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-
+    private MainActivityViewModel vm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        vm = ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication()).create(MainActivityViewModel.class);
+        View headerView = binding.navView.getHeaderView(0);
+        TextView tvNombre = headerView.findViewById(R.id.nombreuser);
+        TextView tvCorreo = headerView.findViewById(R.id.correouser);
+
+        vm.getUsuarioM().observe(this, new Observer<Propietario>() {
+            @Override
+            public void onChanged(Propietario propietario) {
+                if (propietario != null) {
+                    tvNombre.setText(propietario.getNombre());
+                    tvCorreo.setText(propietario.getEmail());
+                }
+            }
+        });
+
+        vm.obtenerUsuarioLogueado();
+
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarMain.toolbar);
-        if (binding.appBarMain.fab != null) {
-            binding.appBarMain.fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).setAnchorView(R.id.fab).show());
-        }
+
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
         assert navHostFragment != null;
 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tipo_inmueble_options">
+        <item>Seleccionar tipo...</item>
+        <item>Departamento</item>
+        <item>Casa</item>
+        <item>Local</item>
+        <item>Depósito</item>
+        <item>Oficina</item>
+        <item>Terreno</item>
+        <item>Cochera</item>
+        <item>PH</item>
+    </string-array>
+
+    <string-array name="uso_inmueble_options">
+        <item>Seleccionar uso...</item>
+        <item>Residencial</item>
+        <item>Comercial</item>
+    </string-array>
+</resources>

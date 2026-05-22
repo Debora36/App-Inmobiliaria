@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -48,6 +49,13 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.ViewHo
                 .placeholder(R.drawable.loading)
                 .error(R.drawable.house)
                 .into(holder.foto);//donde se infla
+        //cuando hago click en el item
+        holder.itemView.setOnClickListener(v ->{
+            Bundle b= new Bundle();
+            b.putSerializable("inmueble", inmuebleActual);
+            Navigation.findNavController(v)
+                    .navigate(R.id.action_nav_inmuebles_to_inmuebleDetalleFragment, b);
+        });
     }
 
     @Override
