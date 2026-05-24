@@ -109,10 +109,10 @@ public class InmuebleCargarViewModel extends AndroidViewModel {
                     public void onResponse(Call<Inmueble> call, Response<Inmueble> response) {
                         if (response.isSuccessful()) {
                             Toast.makeText(getApplication(), "Inmueble cargado", Toast.LENGTH_LONG).show();
-                            exito.setValue(true);
+                            exito.postValue(true);
                         }else{
                             Toast.makeText(getApplication(), "ERROR CARGA INMUEBLE", Toast.LENGTH_LONG).show();
-                            exito.setValue(false);
+                            exito.postValue(false);
                         }
                     }
 
@@ -121,7 +121,7 @@ public class InmuebleCargarViewModel extends AndroidViewModel {
                     public void onFailure(Call<Inmueble> call, Throwable t) {
                         Log.d("errorCargaInmueble", t.getMessage());
                         Toast.makeText(getApplication(), "error no se cargo el inmueble", Toast.LENGTH_LONG).show();
-                        exito.setValue(false);
+                        exito.postValue(false);
                     }
                 });
             } else {

@@ -23,8 +23,8 @@ public class InmuebleDetalleFragment extends Fragment {
 
     private InmuebleDetalleViewModel mViewModel;
     private FragmentInmuebleDetalleBinding binding;
-    public static InmueblesFragment newInstance() {
-        return new InmueblesFragment();
+    public static InmuebleDetalleFragment newInstance() {
+        return new InmuebleDetalleFragment();
     }
 
     @Override

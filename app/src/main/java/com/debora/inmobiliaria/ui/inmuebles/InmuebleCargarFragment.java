@@ -63,7 +63,8 @@ public class InmuebleCargarFragment extends Fragment {
         mViewModel.getExito().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
-                Navigation.findNavController(requireView()).navigate(R.id.nav_inmuebles);
+                if(aBoolean){
+                    Navigation.findNavController(requireView()).navigate(R.id.nav_inmuebles);}
             }
         });
         abrirGaleria();
