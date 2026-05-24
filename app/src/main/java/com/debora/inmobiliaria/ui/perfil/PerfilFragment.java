@@ -66,18 +66,11 @@ public class PerfilFragment extends Fragment {
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Boolean esEditable = mViewModel.getEditableM().getValue();
-
-                if (esEditable) {//esta en modo edicion
                     String nombre    = binding.etNombre.getText().toString();
                     String apellido  = binding.etApellido.getText().toString();
                     String correo    = binding.etCorreo.getText().toString();
                     String telefono  = binding.etTelefono.getText().toString();
-
-                    mViewModel.guardarPerfil(nombre, apellido, correo, telefono);
-                } else {
-                    mViewModel.cambiarEstadoEdicion();//habilita los campos
-                }
+                    mViewModel.botonPresionado(nombre, apellido, correo, telefono);
             }
         });
         binding.btnCambiarContra.setOnClickListener(new View.OnClickListener() {

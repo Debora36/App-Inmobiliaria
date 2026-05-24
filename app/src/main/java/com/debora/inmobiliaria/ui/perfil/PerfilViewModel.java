@@ -39,6 +39,14 @@ public class PerfilViewModel extends AndroidViewModel {
         }
         return editableM;
     }
+    public void botonPresionado(String nombre, String apellido, String correo, String telefono) {
+        Boolean esEditable = editableM.getValue();
+        if (esEditable != null && esEditable) {
+            guardarPerfil(nombre, apellido, correo, telefono);
+        } else {
+            cambiarEstadoEdicion();
+        }
+    }
 
     public void cargarPerfil(){
         editableM.setValue(false);
