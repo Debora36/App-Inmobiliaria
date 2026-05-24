@@ -65,7 +65,23 @@ public class InmuebleCargarViewModel extends AndroidViewModel {
     public void cargarInmueble(String dire, String tipo, String ambientes, String superficie, String uso, String precio, Boolean disponible){
 
         try{
-            if(!dire.isEmpty()||!tipo.isEmpty()||!ambientes.isEmpty()||!superficie.isEmpty()||!uso.isEmpty()||!precio.isEmpty()){
+            if(!dire.isEmpty() && !tipo.isEmpty() && !ambientes.isEmpty() && !superficie.isEmpty() && !uso.isEmpty() && !precio.isEmpty()){
+                if (tipo.equals("Tipo")) {//Si no se selecciono nada se guardo lo del placeholder
+                    Toast.makeText(getApplication(), "Seleccioná el tipo de inmueble", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (uso.equals("Uso")) {
+                    Toast.makeText(getApplication(), "Seleccioná el uso del inmueble", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (Double.parseDouble(precio) <= 0) {
+                    Toast.makeText(getApplication(), "El precio debe ser mayor a 0", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (Integer.parseInt(superficie) <= 0) {
+                    Toast.makeText(getApplication(), "La superficie debe ser mayor a 0", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 Inmueble inmueble= new Inmueble();
                 inmueble.setDireccion(dire);
                 inmueble.setTipo(tipo);
@@ -77,7 +93,6 @@ public class InmuebleCargarViewModel extends AndroidViewModel {
                 //agrego la imagen
                 byte[] imagen = transformarImagen();
                 if (imagen.length==0){
-                    Toast.makeText(getApplication(), "Debe ingresar una foto", Toast.LENGTH_LONG).show();
                     return;
                 }
                 String inmuebleJson = new Gson().toJson(inmueble);//inmueble trasnformado en json
@@ -93,7 +108,7 @@ public class InmuebleCargarViewModel extends AndroidViewModel {
                     @Override
                     public void onResponse(Call<Inmueble> call, Response<Inmueble> response) {
                         if (response.isSuccessful()) {
-                            Toast.makeText(getApplication(), "inmueble cargado", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplication(), "Inmueble cargado", Toast.LENGTH_LONG).show();
                             exito.setValue(true);
                         }else{
                             Toast.makeText(getApplication(), "ERROR CARGA INMUEBLE", Toast.LENGTH_LONG).show();
@@ -109,6 +124,8 @@ public class InmuebleCargarViewModel extends AndroidViewModel {
                         exito.setValue(false);
                     }
                 });
+            } else {
+                Toast.makeText(getApplication(), "Completá todos los campos", Toast.LENGTH_SHORT).show();
             }
 
         }catch(NumberFormatException e){
@@ -119,6 +136,10 @@ public class InmuebleCargarViewModel extends AndroidViewModel {
     private byte[] transformarImagen() {
         try {
             Uri uri = mutableUri.getValue();
+            if (uri == null) {
+                Toast.makeText(getApplication(), "Debe ingresar una foto", Toast.LENGTH_LONG).show();
+                return new byte[]{};
+            }
             InputStream inputStream = getApplication().getContentResolver().openInputStream(uri);
             Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();

@@ -57,8 +57,7 @@ public class InmuebleCargarFragment extends Fragment {
                     binding.etSuperficie.getText().toString(),
                     binding.etUso.getSelectedItem().toString(),
                     binding.etPrecio.getText().toString(),
-                    binding.disponible.isSelected()
-//no se esta cargando bien el disponible
+                    binding.disponible.isChecked()
             );
         });
         mViewModel.getExito().observe(getViewLifecycleOwner(), new Observer<Boolean>() {

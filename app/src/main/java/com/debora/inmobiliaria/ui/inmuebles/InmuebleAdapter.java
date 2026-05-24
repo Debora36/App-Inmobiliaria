@@ -12,6 +12,8 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.GranularRoundedCorners;
 import com.debora.inmobiliaria.R;
 import com.debora.inmobiliaria.modelo.Inmueble;
 import com.debora.inmobiliaria.request.ApiClient;
@@ -48,6 +50,8 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.ViewHo
                 .load(ApiClient.BASE_URL + inmuebleActual.getImagen())
                 .placeholder(R.drawable.loading)
                 .error(R.drawable.house)
+                .transform(new CenterCrop(),
+                        new GranularRoundedCorners(20, 20, 5, 5))
                 .into(holder.foto);//donde se infla
         //cuando hago click en el item
         holder.itemView.setOnClickListener(v ->{

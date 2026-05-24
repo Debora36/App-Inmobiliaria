@@ -5,18 +5,21 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.inmuebles.InmuebleDetalleFragment">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/teal_200">
+        android:background="@color/teal_200"
+        android:padding="40dp">
 
         <TextView
             android:id="@+id/tvDireccion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="50dp"
-            android:layout_marginTop="60dp"
             android:text="Dirección:"
             android:textColor="@color/marron"
             app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +31,6 @@
             android:id="@+id/direccion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="50dp"
             android:layout_marginTop="8dp"
             android:text="TextView"
             android:textAlignment="textStart"
@@ -41,9 +43,7 @@
             android:id="@+id/tvAmbientes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="50dp"
             android:layout_marginTop="40dp"
-            android:layout_marginEnd="60dp"
             android:text="Ambientes:"
             android:textColor="@color/marron"
             app:layout_constraintEnd_toEndOf="parent"
@@ -54,7 +54,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:layout_marginEnd="60dp"
             android:text="Uso:"
             android:textColor="@color/marron"
             app:layout_constraintEnd_toEndOf="parent"
@@ -65,7 +64,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="60dp"
             android:text="TextView"
             android:textColor="#000000"
             android:textSize="20sp"
@@ -77,7 +75,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:layout_marginEnd="60dp"
             android:text="Precio:"
             android:textColor="@color/marron"
             app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +85,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="60dp"
             android:text="TextView"
             android:textColor="#000000"
             android:textSize="20sp"
@@ -99,9 +95,7 @@
             android:id="@+id/ambientes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="50dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="60dp"
             android:text="Text"
             android:textAlignment="textEnd"
             android:textColor="#000000"
@@ -113,7 +107,6 @@
             android:id="@+id/tvTipo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
             android:layout_marginTop="40dp"
             android:text="Tipo:"
             android:textColor="@color/marron"
@@ -124,7 +117,6 @@
             android:id="@+id/tipo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
             android:layout_marginTop="8dp"
             android:text="TextView"
             android:textColor="#000000"
@@ -136,10 +128,9 @@
             android:id="@+id/tvSuperficie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
             android:layout_marginTop="40dp"
-            android:textColor="@color/marron"
             android:text="Superficie:"
+            android:textColor="@color/marron"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tipo" />
 
@@ -147,7 +138,6 @@
             android:id="@+id/superficie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
             android:layout_marginTop="8dp"
             android:text="TextView"
             android:textColor="#000000"
@@ -159,19 +149,18 @@
             android:id="@+id/disponible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
             android:layout_marginTop="40dp"
-            android:textColor="@color/marron"
             android:text="Disponible"
+            android:textColor="@color/marron"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/superficie" />
 
         <ImageView
             android:id="@+id/imagenInmueble"
-            android:layout_width="412dp"
-            android:layout_height="263dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="40dp"
+            android:layout_width="0dp"
+            android:layout_height="230dp"
+            android:layout_marginTop="30dp"
+            android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -179,6 +168,6 @@
             app:layout_constraintTop_toBottomOf="@+id/precio"
             tools:src="@tools:sample/avatars" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </FrameLayout>
