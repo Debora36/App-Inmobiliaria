@@ -3,7 +3,9 @@ package com.debora.inmobiliaria.request;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.debora.inmobiliaria.modelo.Contrato;
 import com.debora.inmobiliaria.modelo.Inmueble;
+import com.debora.inmobiliaria.modelo.Pago;
 import com.debora.inmobiliaria.modelo.Propietario;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -24,6 +26,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 
 public class ApiClient {
     public final static String BASE_URL = "https://capacitacion.alwaysdata.net/";
@@ -65,6 +68,17 @@ public class ApiClient {
         Call<Inmueble> cargarInmueble(@Header("Authorization") String token,
                                       @Part MultipartBody.Part imagen,
                                       @Part("inmueble") RequestBody inmuebleBody);//RequestBody envia el inmueble en formato json (string)
+
+        @GET("api/Inmuebles/GetContratoVigente")
+        Call<List<Inmueble>> getInmueblesAlquilados(@Header("Authorization") String token);
+
+        @GET("api/contratos/inmueble/{id}")
+        Call<Contrato> getContrato(@Header("Authorization") String token, @Path("id") int id);
+
+        @GET("api/pagos/contrato/{id}")
+        Call<List<Pago>> getPagos(@Header("Authorization") String token, @Path("id")int id);
+
+
 
     }
     //creamos el token

@@ -3,11 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.inquilinos.InquilinosFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.inquilinos.InquilinosFragment"
+    android:background="@color/teal_700">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="match_parent" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="655dp"
+        android:layout_marginBottom="56dp"
+        android:background="@android:color/transparent">
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </FrameLayout>

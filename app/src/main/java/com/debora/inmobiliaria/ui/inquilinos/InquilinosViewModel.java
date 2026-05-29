@@ -1,7 +1,65 @@
 package com.debora.inmobiliaria.ui.inquilinos;
 
+import android.app.Application;
+import android.util.Log;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class InquilinosViewModel extends ViewModel {
-    // TODO: Implement the ViewModel
+import com.debora.inmobiliaria.modelo.Inmueble;
+import com.debora.inmobiliaria.request.ApiClient;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class InquilinosViewModel extends AndroidViewModel {
+   private MutableLiveData<List<Inmueble>> inmueblesAlquilados;
+
+    public InquilinosViewModel(@NonNull Application application) {
+        super(application);
+    }
+    
+    public LiveData<List<Inmueble>> getInmueblesAlquilados(){
+        if (inmueblesAlquilados==null){
+            inmueblesAlquilados=new MutableLiveData<>();
+        }
+        return inmueblesAlquilados;
+    }
+
+
+    public void obtenerInmueblesAlquilados() {
+        String token = ApiClient.usarToken(getApplication());
+        ApiClient.ServicioInmobiliaria api = ApiClient.obtenerServicio();
+
+        Call<List<Inmueble>> call = api.getInmueblesAlquilados(token);
+        call.enqueue(new Callback<List<Inmueble>>() {
+            @Override
+            public void onResponse(Call<List<Inmueble>> call, Response<List<Inmueble>> response) {
+                if(response.isSuccessful()){
+                    inmueblesAlquilados.postValue(response.body());
+                }else{
+                    if(response.code()==401 || response.code()==403){
+                        Toast.makeText(getApplication(), "no se cargaron los inmuebles", Toast.LENGTH_LONG).show();
+                        ApiClient.crearToken(getApplication(), "");//pisa el token si hubo error
+                        System.exit(0);
+                    }
+                }
+            }
+
+
+            @Override
+            public void onFailure(Call<List<Inmueble>> call, Throwable t) {
+                Log.d("errorInmueble", t.getMessage());
+                Toast.makeText(getApplication(), "error no se cargaron los inmuebles", Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
 }
