@@ -75,7 +75,7 @@
     <fragment
         android:id="@+id/contratoDetalleFragment2"
         android:name="com.debora.inmobiliaria.ui.contratos.ContratoDetalleFragment"
-        android:label="fragment_contrato_detalle"
+        android:label="Contrato actual"
         tools:layout="@layout/fragment_contrato_detalle" >
         <action
             android:id="@+id/action_contratoDetalleFragment2_to_nav_contratos"
@@ -87,10 +87,7 @@
     <fragment
         android:id="@+id/pagosFragment"
         android:name="com.debora.inmobiliaria.ui.Pagos.PagosFragment"
-        android:label="fragment_pagos"
+        android:label="Pagos"
         tools:layout="@layout/fragment_pagos" >
-        <action
-            android:id="@+id/action_pagosFragment_to_contratoDetalleFragment2"
-            app:destination="@id/contratoDetalleFragment2" />
     </fragment>
 </navigation>

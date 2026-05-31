@@ -90,6 +90,9 @@ public class Contrato implements Serializable{
     public Boolean getEstado() {
         return estado;
     }
+    public String getEstadoTexto() {
+        return estado ? "Vigente" : "No vigente";
+    }
 
     public void setEstado(Boolean estado) {
         this.estado = estado;

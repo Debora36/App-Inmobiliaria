@@ -20,6 +20,8 @@ import retrofit2.Response;
 
 public class ContratoDetalleViewModel extends AndroidViewModel{
 private MutableLiveData<Contrato> contratoMutable;
+ private MutableLiveData<Integer> idContratoMutable;
+
     public ContratoDetalleViewModel(@NonNull Application application) {
         super(application);
     }
@@ -30,6 +32,13 @@ private MutableLiveData<Contrato> contratoMutable;
         }
         return contratoMutable;
     }
+    public LiveData<Integer> getIdContratoMutable(){
+        if(idContratoMutable==null){
+            idContratoMutable=new MutableLiveData<>();
+        }
+        return idContratoMutable;
+    }
+
     public void cargarContrato(int idInmueble) {
         String token = ApiClient.usarToken(getApplication());
         ApiClient.ServicioInmobiliaria api = ApiClient.obtenerServicio();
@@ -43,18 +52,28 @@ private MutableLiveData<Contrato> contratoMutable;
                     Contrato contrato= response.body();
                     contratoMutable.postValue(contrato);
                 }else{
-                    Log.d("Contrato", "codigo error "+response.code());
                     Toast.makeText(getApplication(), "Se produjo un error al cargar el contrato", Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<Contrato> call, Throwable t) {
-                    Log.d("Contrato", "Fallo onFailure "+t.getMessage());
                 Toast.makeText(getApplication(), "Se produjo un error onFailure", Toast.LENGTH_LONG).show();
             }
         });
 
+    }
+    public void verPagos() {
+        Contrato contrato = contratoMutable.getValue();
+        if (contrato == null){
+            Toast.makeText(getApplication(), "Espere un momento, los datos se están cargando", Toast.LENGTH_LONG).show();
+        }else{
+            idContratoMutable.setValue(contrato.getIdContrato());//Mando el id de contrato para que la vista navegue a pagos
+        }
+
+    }
+    public void resetIdContratoMutable() {
+        idContratoMutable.setValue(null);// lo vuelvo a poner el null para que me deje volver atras
     }
 
 }

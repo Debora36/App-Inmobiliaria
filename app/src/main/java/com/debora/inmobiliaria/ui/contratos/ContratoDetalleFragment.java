@@ -41,20 +41,24 @@ public class ContratoDetalleFragment extends Fragment {
               binding.fechaInicio.setText(contrato.getFechaInicio());
               binding.fechaF.setText(contrato.getFechaFinalizacion());
               binding.inquilino.setText(contrato.getInquilino().getNombre());
-              binding.estado.setText(contrato.getEstado().toString());
+              binding.estado.setText(contrato.getEstadoTexto());//uso este metodo para que en vez de true o false me muetre algo mas descriptivo
               binding.monto.setText("$"+contrato.getMontoAlquiler());
           }
       });
         int idInmueble = getArguments().getInt("idInmueble");
         mViewModel.cargarContrato(idInmueble);
 
-        binding.btnPagos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavController nav = Navigation.findNavController(v);
-                nav.navigate(R.id.action_contratoDetalleFragment2_to_pagosFragment);
-            }
+        binding.btnPagos.setOnClickListener(v -> mViewModel.verPagos());
+
+        mViewModel.getIdContratoMutable().observe(getViewLifecycleOwner(), idContrato -> {
+            if (idContrato == null) return;//Utilizo el if para asegurar que la vista solo se ejecute cuando hago click en el boton y se asigna el ID real y no cuando hago click en la flecha desde pagos a contrato detalle
+            Bundle b = new Bundle();
+            b.putInt("idContrato", idContrato);
+            Navigation.findNavController(requireView())
+                    .navigate(R.id.action_contratoDetalleFragment2_to_pagosFragment, b);
+            mViewModel.resetIdContratoMutable(); // reseteo después de navegar
         });
+
        return binding.getRoot();
 
     }
