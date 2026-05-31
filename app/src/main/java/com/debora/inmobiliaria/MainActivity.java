@@ -1,10 +1,12 @@
 package com.debora.inmobiliaria;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.debora.inmobiliaria.modelo.Propietario;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -12,6 +14,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
@@ -72,9 +75,22 @@ public class MainActivity extends AppCompatActivity {
 
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
 
+
 // Drawer
         assert binding.navView != null;
         NavigationUI.setupWithNavController(binding.navView, navController);
+
+        binding.navView.setNavigationItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.nav_logout) {
+                muestraDialogo();
+                return true;
+            }
+            boolean handled = NavigationUI.onNavDestinationSelected(item, navController);
+            if (handled) {
+                binding.drawerLayout.closeDrawers();
+            }
+            return handled;
+        });
 
 // Bottom Navigation
         assert binding.appBarMain.contentMain.bottomNavView != null;
@@ -102,5 +118,23 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    private void muestraDialogo(){
+        new  AlertDialog.Builder(this, R.style.Dialogo)
+                .setTitle("Cierre de sesión")
+                .setMessage("¿Esta seguro de que quiere cerrar la sesión?")
+                .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                })
+                .show();
     }
 }

@@ -1,5 +1,8 @@
 package com.debora.inmobiliaria;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -36,5 +39,16 @@ public class LoginActivity extends AppCompatActivity {
         vm.getMensaje().observe(this, mensaje -> {
             Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
         });
+        vm.leerUnSensor();
+
+        vm.getAgite().observe(this, agito -> {
+            llamar(this);
+        });
+    }
+    public void llamar(Context ctx){
+        Intent intentLlamada = new Intent(Intent.ACTION_CALL);
+        intentLlamada.setData(Uri.parse("tel:2664553747"));
+        intentLlamada.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        ctx.startActivity(intentLlamada);
     }
 }

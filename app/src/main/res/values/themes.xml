@@ -14,13 +14,19 @@
         <!-- Customize your theme here. -->
         <item name="colorControlActivated">@color/purple_700</item>
     </style>
+    <!-- estilo del dialogo-->
+   <style name="Dialogo" parent="Theme.AppCompat.Light.Dialog.Alert">
+       <item name="colorAccent">@color/teal_200</item>
+       <item name="android:background">@color/purple_700</item>
+       <item name="android:textColor">@color/white</item>
+   </style>
 
-    <style name="Theme.Inmobiliaria.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
+   <style name="Theme.Inmobiliaria.NoActionBar">
+       <item name="windowActionBar">false</item>
+       <item name="windowNoTitle">true</item>
+   </style>
 
-    <style name="Theme.Inmobiliaria.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+   <style name="Theme.Inmobiliaria.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.Inmobiliaria.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+   <style name="Theme.Inmobiliaria.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
