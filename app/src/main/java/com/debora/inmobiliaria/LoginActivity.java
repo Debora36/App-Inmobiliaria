@@ -1,8 +1,11 @@
 package com.debora.inmobiliaria;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -25,7 +28,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
-        //vm= new ViewModelProvider(this).get(LoginActivityViewModel.class);
         setContentView(binding.getRoot());
         vm = ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication()).create(LoginActivityViewModel.class);
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -39,16 +41,18 @@ public class LoginActivity extends AppCompatActivity {
         vm.getMensaje().observe(this, mensaje -> {
             Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
         });
+        pedirPermiso();
         vm.leerUnSensor();
 
         vm.getAgite().observe(this, agito -> {
-            llamar(this);
+            vm.llamar();
         });
     }
-    public void llamar(Context ctx){
-        Intent intentLlamada = new Intent(Intent.ACTION_CALL);
-        intentLlamada.setData(Uri.parse("tel:2664553747"));
-        intentLlamada.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        ctx.startActivity(intentLlamada);
+    public void pedirPermiso(){
+        if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.M
+                && checkSelfPermission(Manifest.permission.CALL_PHONE)
+                != PackageManager.PERMISSION_GRANTED){
+            requestPermissions(new String[]{Manifest.permission.CALL_PHONE},1000);
+        }
     }
 }

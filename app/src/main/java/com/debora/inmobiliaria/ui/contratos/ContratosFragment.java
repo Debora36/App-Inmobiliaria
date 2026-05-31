@@ -15,9 +15,7 @@ import android.view.ViewGroup;
 
 import com.debora.inmobiliaria.R;
 import com.debora.inmobiliaria.databinding.FragmentContratosBinding;
-import com.debora.inmobiliaria.databinding.FragmentInquilinosBinding;
-import com.debora.inmobiliaria.ui.inmuebles.InmuebleAdapter;
-import com.debora.inmobiliaria.ui.inquilinos.InquilinosViewModel;
+
 
 public class ContratosFragment extends Fragment {
 

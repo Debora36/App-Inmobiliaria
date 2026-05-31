@@ -69,6 +69,7 @@ private MutableLiveData<Contrato> contratoMutable;
             Toast.makeText(getApplication(), "Espere un momento, los datos se están cargando", Toast.LENGTH_LONG).show();
         }else{
             idContratoMutable.setValue(contrato.getIdContrato());//Mando el id de contrato para que la vista navegue a pagos
+            resetIdContratoMutable();
         }
 
     }

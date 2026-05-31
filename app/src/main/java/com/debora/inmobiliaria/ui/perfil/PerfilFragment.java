@@ -66,11 +66,12 @@ public class PerfilFragment extends Fragment {
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    String nombre    = binding.etNombre.getText().toString();
-                    String apellido  = binding.etApellido.getText().toString();
-                    String correo    = binding.etCorreo.getText().toString();
-                    String telefono  = binding.etTelefono.getText().toString();
-                    mViewModel.botonPresionado(nombre, apellido, correo, telefono);
+                String dni = binding.etDni.getText().toString();
+                String nombre    = binding.etNombre.getText().toString();
+                String apellido  = binding.etApellido.getText().toString();
+                String correo    = binding.etCorreo.getText().toString();
+                String telefono  = binding.etTelefono.getText().toString();
+                mViewModel.botonPresionado(dni, nombre, apellido, correo, telefono);
             }
         });
         binding.btnCambiarContra.setOnClickListener(new View.OnClickListener() {

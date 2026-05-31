@@ -95,6 +95,12 @@ public class LoginActivityViewModel extends AndroidViewModel {
         }
 
     }
+    public void llamar(){
+        Intent intentLlamada = new Intent(Intent.ACTION_CALL);
+        intentLlamada.setData(Uri.parse("tel:2664553747"));
+        intentLlamada.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intentLlamada);
+    }
 
     private class ManejaEventos implements SensorEventListener {
         private long ultimoAgite;
@@ -108,7 +114,7 @@ public class LoginActivityViewModel extends AndroidViewModel {
             float y = event.values[1];
             float z = event.values[2];
             double fuerza = Math.sqrt(x * x + y * y + z * z);
-            if (fuerza > 15) {
+            if (fuerza > 20) {
                 long ahora = System.currentTimeMillis();
                 if (ahora - ultimoAgite > 2000) {
                     ultimoAgite = ahora;

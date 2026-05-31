@@ -39,10 +39,10 @@ public class PerfilViewModel extends AndroidViewModel {
         }
         return editableM;
     }
-    public void botonPresionado(String nombre, String apellido, String correo, String telefono) {
+    public void botonPresionado(String dni, String nombre, String apellido, String correo, String telefono) {
         Boolean esEditable = editableM.getValue();
         if (esEditable != null && esEditable) {
-            guardarPerfil(nombre, apellido, correo, telefono);
+            guardarPerfil(dni, nombre, apellido, correo, telefono);
         } else {
             cambiarEstadoEdicion();
         }
@@ -78,11 +78,12 @@ public class PerfilViewModel extends AndroidViewModel {
         boolean nuevoEstado = !editableM.getValue();
         editableM.setValue(nuevoEstado);
     }
-    public void guardarPerfil(String nombre, String apellido, String correo, String telefono) {
+    public void guardarPerfil(String dni, String nombre, String apellido, String correo, String telefono) {
         Propietario actual = propietarioM.getValue();
         if (actual == null) return;
 
         // Actualizás el objeto con los nuevos valores
+        actual.setDni(dni);
         actual.setNombre(nombre);
         actual.setApellido(apellido);
         actual.setEmail(correo);

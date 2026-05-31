@@ -56,7 +56,6 @@ public class ContratoDetalleFragment extends Fragment {
             b.putInt("idContrato", idContrato);
             Navigation.findNavController(requireView())
                     .navigate(R.id.action_contratoDetalleFragment2_to_pagosFragment, b);
-            mViewModel.resetIdContratoMutable(); // reseteo después de navegar
         });
 
        return binding.getRoot();
