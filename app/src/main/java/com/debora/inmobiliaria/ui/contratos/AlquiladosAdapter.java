@@ -54,19 +54,17 @@ public class AlquiladosAdapter extends RecyclerView.Adapter<AlquiladosAdapter.Vi
                         new GranularRoundedCorners(20, 20, 5, 5))
                 .into(holder.foto);//donde se infla
 
+        Bundle b = new Bundle();
+        b.putInt("idInmueble", inmuebleActual.getIdInmueble());
         holder.btnContrato.setOnClickListener(v -> {
-            Bundle b = new Bundle();
-            b.putInt("idInmueble", inmuebleActual.getIdInmueble());
             Navigation.findNavController(v)
                     .navigate(R.id.action_nav_contratos_to_contratoDetalleFragment22, b);
         });
 
-//        holder.btnInquilino.setOnClickListener(v -> {
-//            Bundle b = new Bundle();
-//            b.putSerializable("inmueble", inmuebleActual);
-//            Navigation.findNavController(v)
-//                    .navigate(R.id.action_nav_contratos_to_inquilinoDetalleFragment, b);
-//        });
+        holder.btnInquilino.setOnClickListener(v -> {
+            Navigation.findNavController(v)
+                    .navigate(R.id.action_nav_contratos_to_inquilinoDetalleFragment, b);
+        });
 
     }
 

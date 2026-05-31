@@ -17,10 +17,6 @@
             android:icon="@drawable/inmueble"
             android:title="@string/menu_inmuebles" />
         <item
-            android:id="@+id/nav_inquilinos"
-            android:icon="@drawable/iniquilino"
-            android:title="@string/menu_inquilinos" />
-        <item
             android:id="@+id/nav_contratos"
             android:icon="@drawable/contrato"
             android:title="@string/menu_contratos" />

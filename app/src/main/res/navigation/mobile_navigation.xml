@@ -31,11 +31,6 @@
             app:destination="@id/inmuebleCargarFragment" />
     </fragment>
     <fragment
-        android:id="@+id/nav_inquilinos"
-        android:name="com.debora.inmobiliaria.ui.inquilinos.InquilinosFragment"
-        android:label="Inquilinos"
-        tools:layout="@layout/fragment_inquilinos" />
-    <fragment
         android:id="@+id/nav_contratos"
         android:name="com.debora.inmobiliaria.ui.contratos.ContratosFragment"
         android:label="Contratos"
@@ -43,12 +38,10 @@
         <action
             android:id="@+id/action_nav_contratos_to_contratoDetalleFragment22"
             app:destination="@id/contratoDetalleFragment2" />
+        <action
+            android:id="@+id/action_nav_contratos_to_inquilinoDetalleFragment"
+            app:destination="@id/inquilinoDetalleFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/nav_logout"
-        android:name="com.debora.inmobiliaria.ui.logout.LogoutFragment"
-        android:label="Logout"
-        tools:layout="@layout/fragment_logout" />
     <fragment
         android:id="@+id/perfilEditarContrasenaFragment"
         android:name="com.debora.inmobiliaria.ui.perfil.PerfilEditarContrasenaFragment"
@@ -90,4 +83,9 @@
         android:label="Pagos"
         tools:layout="@layout/fragment_pagos" >
     </fragment>
+    <fragment
+        android:id="@+id/inquilinoDetalleFragment"
+        android:name="com.debora.inmobiliaria.ui.inquilinos.InquilinoDetalleFragment"
+        android:label="Información del inquilino"
+        tools:layout="@layout/fragment_inquilino_detalle" />
 </navigation>
